@@ -37,7 +37,7 @@ class _TimerPageState extends State<TimerPage> {
         children: [
           Visibility(
             replacement: SizedBox.fromSize(size: Size.zero),
-            visible: counter % 3 == 0,
+            visible: counter % 4 == 0,
             child: Column(
               children: [
                 const Text(
@@ -70,7 +70,7 @@ class _TimerPageState extends State<TimerPage> {
             ),
           ),
           Visibility(
-            visible: counter % 3 == 1,
+            visible: counter % 4 == 1,
             child: Column(
               children: [
                 const Text(
@@ -78,7 +78,7 @@ class _TimerPageState extends State<TimerPage> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                   textScaleFactor: 3,
                 ),
-                customTimer2(time: 2),
+                customTimer2(time: 3),
                 InkWell(
                   child: Container(
                     height: MediaQuery.of(context).size.height / 13,
@@ -103,11 +103,44 @@ class _TimerPageState extends State<TimerPage> {
             ),
           ),
           Visibility(
-            visible: counter % 3 == 2,
+            visible: counter % 4 == 2,
             child: Column(
               children: [
                 const Text(
                   "ROUND 3",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textScaleFactor: 3,
+                ),
+                customTimer(time: 2),
+                InkWell(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 13,
+                    width: MediaQuery.of(context).size.width / 6,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(255, 175, 41, 77),
+                      border: Border.all(color: Colors.black),
+                    ),
+                    child: custom_text(
+                      text: "NEXT ROUND",
+                    ),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      counter++;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+          Visibility(
+            visible: counter % 4 == 3,
+            child: Column(
+              children: [
+                const Text(
+                  "ROUND 4",
                   style: TextStyle(fontWeight: FontWeight.bold),
                   textScaleFactor: 3,
                 ),
